@@ -2,17 +2,35 @@
 #include <iomanip>
 #include "ContactClass.hpp"
 
+void printTenSearch(const std::string s)
+{
+	std::int8_t index = -1;
+
+	if (s.length() >= 10)
+	{
+		while (++index < 9)
+			std::cout << s[index];
+		std::cout << '.';
+	}
+	else
+		std::cout << std::setw(10) << s;
+}
+
 void searchContacts(Contact contacts[8])
 {
 	std::int8_t index = -1;
 
-	std::cout << "   Index  |First Name| Last Name|  Nickname" << std::endl;
+	std::cout << "   Index  |First Name| Last Name|  Nickname|" << std::endl;
 	while (contacts[++index].firstName.compare(""))
-		std::cout <<
-			std::setw(10) << (int)index << "|" <<
-			std::setw(10) << contacts[index].firstName << "|" <<
-			std::setw(10) << contacts[index].lastName << "|" <<
-			std::setw(10) << contacts[index].nickname << std::endl;
+	{
+		std::cout << std::setw(10) << (int)index << "|";
+		printTenSearch(contacts[index].firstName);
+		std::cout << '|';
+		printTenSearch(contacts[index].lastName);
+		std::cout << '|';
+		printTenSearch(contacts[index].nickname);
+		std::cout << '|' << std::endl;
+	}
 }
 
 void addContact(Contact contacts[8])
@@ -52,12 +70,6 @@ void addContact(Contact contacts[8])
 		std::cout << "Enter Darkest Secret: ";
 	}
 	while (std::getline(std::cin, contacts[index].darkestSecret) && contacts[index].darkestSecret.compare("") == 0);
-
-	contacts[index].printFirstName();
-	contacts[index].printLastName();
-	contacts[index].printNickname();
-	contacts[index].printPhoneNumber();
-	contacts[index].printDarkestSecret();
 }
 
 int	main(void)
@@ -74,7 +86,6 @@ int	main(void)
 			searchContacts(contacts);
 		else if (buf.compare("EXIT") == 0)
 			return 0;
-		// contacts[0].setFirstName(buf);
 	}
 	return (0);
 }
