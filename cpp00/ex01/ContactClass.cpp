@@ -6,7 +6,7 @@
 /*   By: rmouduri <rmouduri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:25:55 by rmouduri          #+#    #+#             */
-/*   Updated: 2022/01/24 12:26:59 by rmouduri         ###   ########.fr       */
+/*   Updated: 2022/01/24 12:38:48 by rmouduri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Contact::Contact(void)
 {
 	static int	index = 0;
 
-	std::cout << "Contact " << index++ << " created" << std::endl;
+	std::cout << "Contact " << ++index << " created" << std::endl;
 	return ;
 }
 
@@ -25,7 +25,7 @@ Contact::~Contact(void)
 {
 	static int	index = 0;
 
-	std::cout << "Contact " << index++ << " deleted" << std::endl;
+	std::cout << "Contact " << ++index << " deleted" << std::endl;
 	return ;
 }
 
@@ -52,31 +52,6 @@ void Contact::printPhoneNumber(void)
 void Contact::printDarkestSecret(void)
 {
 	std::cout << this->darkestSecret << std::endl;
-}
-
-void Contact::setFirstName(std::string s)
-{
-	firstName = s;
-}
-
-void Contact::setLastName(std::string s)
-{
-	lastName = s;
-}
-
-void Contact::setNickname(std::string s)
-{
-	nickname = s;
-}
-
-void Contact::setPhoneNumber(std::string s)
-{
-	phoneNumber = s;
-}
-
-void Contact::setDarkestSecret(std::string s)
-{
-	darkestSecret = s;
 }
 
 // const std::string Contact::getFirstName(void)

@@ -60,7 +60,7 @@ int	main(void)
 			;
 		else if (buf.compare("EXIT") == 0)
 			return 0;
-		contacts[0].setFirstName(buf);
+		// contacts[0].setFirstName(buf);
 		contacts[0].printFirstName();
 	}
 	return (0);
