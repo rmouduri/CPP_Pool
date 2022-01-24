@@ -1,6 +1,21 @@
 #include <iostream>
 #include "ContactClass.hpp"
 
+void searchContacts(Contact contacts[8])
+{
+	std::int8_t index = -1;
+
+	while (contacts[++index].firstName.compare(""))
+	{
+		contacts[index].printFirstName();
+		contacts[index].printLastName();
+		contacts[index].printNickname();
+		contacts[index].printPhoneNumber();
+		contacts[index].printDarkestSecret();
+		std::cout << std::endl;
+	}
+}
+
 void addContact(Contact contacts[8])
 {
 	std::int8_t index = 0;
@@ -57,11 +72,10 @@ int	main(void)
 		if (buf.compare("ADD") == 0)
 			addContact(contacts);
 		else if (buf.compare("SEARCH") == 0)
-			;
+			searchContacts(contacts);
 		else if (buf.compare("EXIT") == 0)
 			return 0;
 		// contacts[0].setFirstName(buf);
-		contacts[0].printFirstName();
 	}
 	return (0);
 }
