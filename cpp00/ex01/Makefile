@@ -1,5 +1,6 @@
 SRCS		=	PhoneBook.cpp	\
-				ContactClass.cpp
+				ContactClass.cpp	\
+				PhonebookClass.cpp
 
 OBJS_SRCS	=	$(SRCS:.c=.o)
 
@@ -10,9 +11,9 @@ INCLUDES	=	-I./includes/
 
 NAME		=	phoneBook
 
-CFLAGS      =   -Wall -Werror -Wextra
+CFLAGS      =   -Wall -Werror -Wextra -std=c++98
 
-CC			=	clang++
+CC			=	c++
 
 RM			=	rm -f
 

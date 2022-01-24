@@ -1,41 +1,70 @@
 #include <iostream>
 #include <iomanip>
 #include "ContactClass.hpp"
+#include "PhonebookClass.hpp"
 
-void printTenSearch(const std::string s)
+void printContactIndex(Contact &contact)
 {
-	std::int8_t index = -1;
+	std::cout <<
+		std::setw(contact.firstName.length()) << "First Name" << '|' <<
+		std::setw(contact.lastName.length()) << "Last Name" << '|' <<
+		std::setw(contact.nickname.length()) << "Nickname" << '|' <<
+		std::setw(contact.phoneNumber.length()) << "Phone Number" << '|' <<
+		std::setw(contact.darkestSecret.length()) << "Darkest Secret" << '|' << std::endl;
+	std::cout <<
+		std::setw(10) << contact.firstName << '|' <<
+		std::setw(9) << contact.lastName << '|' <<
+		std::setw(8) << contact.nickname << '|' <<
+		std::setw(12) << contact.phoneNumber << '|' <<
+		std::setw(14) << contact.darkestSecret << '|' << std::endl;
+}
+
+void printTenSearch(std::string s)
+{
+	int index = -1;
 
 	if (s.length() >= 10)
 	{
 		while (++index < 9)
 			std::cout << s[index];
-		std::cout << '.';
+		std::cout << ".|";
 	}
 	else
-		std::cout << std::setw(10) << s;
+		std::cout << std::setw(10) << s << '|';
 }
 
 void searchContacts(Contact contacts[8])
 {
-	std::int8_t index = -1;
+	int index = -1;
+	std::string	buf;
 
 	std::cout << "   Index  |First Name| Last Name|  Nickname|" << std::endl;
 	while (contacts[++index].firstName.compare(""))
 	{
 		std::cout << std::setw(10) << (int)index << "|";
 		printTenSearch(contacts[index].firstName);
-		std::cout << '|';
 		printTenSearch(contacts[index].lastName);
-		std::cout << '|';
 		printTenSearch(contacts[index].nickname);
-		std::cout << '|' << std::endl;
+		std::cout << std::endl;
+	}
+	if (index == 0)
+		return ;
+	std::cout << "Enter an Index (0-" << (int)index - 1 << "): ";
+	while (std::getline(std::cin, buf))
+	{
+		if (buf.length() == 1 && buf[0] - 48 >= 0 && buf[0] - 48 < index)
+		{
+			printContactIndex(contacts[buf[0] - 48]);
+			break ;
+		}
+		else
+			std::cout << "Enter an Index (0-" << (int)index - 1 << "): ";
 	}
 }
 
 void addContact(Contact contacts[8])
 {
-	std::int8_t index = 0;
+	int index = 0;
 	std::string	copy;
 
 	while (index < 8 && contacts[index].firstName.compare("") != 0)
@@ -74,16 +103,16 @@ void addContact(Contact contacts[8])
 
 int	main(void)
 {
-	Contact contacts[8];
+	PhonebookClass phonebook;
 	std::string buf;
 
 	while (1)
 	{
 		std::getline(std::cin, buf);
 		if (buf.compare("ADD") == 0)
-			addContact(contacts);
+			addContact(phonebook.contacts);
 		else if (buf.compare("SEARCH") == 0)
-			searchContacts(contacts);
+			searchContacts(phonebook.contacts);
 		else if (buf.compare("EXIT") == 0)
 			return 0;
 	}
