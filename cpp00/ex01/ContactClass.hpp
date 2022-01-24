@@ -5,14 +5,13 @@
 
 class Contact
 {
-private:
+public:
 	std::string firstName;
 	std::string lastName;
-	std::string nickame;
+	std::string nickname;
 	std::string phoneNumber;
 	std::string darkestSecret;
 
-public:
 	Contact();
 	~Contact();
 	void printFirstName();
@@ -25,11 +24,11 @@ public:
 	void setNickname(std::string s);
 	void setPhoneNumber(std::string s);
 	void setDarkestSecret(std::string s);
-	const std::string getFirstName();
-	const std::string getLastName();
-	const std::string getNickname();
-	const std::string getPhoneNumber();
-	const std::string getDarkestSecret();
+	// const std::string getFirstName();
+	// const std::string getLastName();
+	// const std::string getNickname();
+	// const std::string getPhoneNumber();
+	// const std::string getDarkestSecret();
 };
 
 #endif //CONTACTCLASS_HPP
