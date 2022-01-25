@@ -111,8 +111,13 @@ int	main(void)
 	PhonebookClass phonebook;
 	std::string buf;
 
+	std::cout << "[Usage]\nADD: Adds a contact in the phonebook\n\
+SEARCH: Shows a list of the contacts in the phonebook then the details of the contact whose index is given\n\
+EXIT: Self-explanatory\n" << std::endl;
+
 	while (1)
 	{
+		std::cout << "> ";
 		std::getline(std::cin, buf);
 		if (buf.compare("ADD") == 0)
 			addContact(phonebook.contacts);
