@@ -13,13 +13,15 @@ Account::Account(int initial_deposit)
 	this->_amount = initial_deposit;
 	_totalAmount += initial_deposit;
 
+	_displayTimestamp();
     std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
 }
 
 Account::~Account(void)
 {
-    //timestamp()
-    std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
+	_displayTimestamp();
+    std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" <<
+		(this->_accountIndex < _nbAccounts - 1 ? "\n" : "");
 }
 
 int Account::getNbAccounts(void)
@@ -44,6 +46,7 @@ int Account::getNbWithdrawals(void)
 
 void Account::displayAccountsInfos(void)
 {
+	_displayTimestamp();
 	std::cout
 		<< " accounts:" << getNbAccounts()
 		<< ";total:" << getTotalAmount()
@@ -57,6 +60,8 @@ void Account::makeDeposit(int deposit)
 	this->_amount += deposit;
 	++_totalNbDeposits;
 	_totalAmount += deposit;
+	
+	_displayTimestamp();
 	std::cout
 		<< " index:" << this->_accountIndex
 		<< ";p_amount:" << this->_amount - deposit
@@ -72,6 +77,8 @@ bool Account::makeWithdrawal(int withdrawal)
 		this->_amount -= withdrawal;
 		++_totalNbWithdrawals;
 		_totalAmount -= withdrawal;
+	
+		_displayTimestamp();
 		std::cout
 			<< " index:" << this->_accountIndex
 			<< ";p_amount:" << this->_amount + withdrawal
@@ -81,10 +88,13 @@ bool Account::makeWithdrawal(int withdrawal)
 		return true;
 	}
 	else
+	{
+		_displayTimestamp();
 		std::cout
 			<< " index:" << this->_accountIndex
-			<< ";p_amount:" << this->_amount + withdrawal
+			<< ";p_amount:" << this->_amount
 			<< ";withdrawal:" << "refused" << std::endl;
+	}
 	return false;
 }
 
@@ -95,9 +105,15 @@ int Account::checkAmount(void) const
 
 void Account::displayStatus(void) const
 {
+	_displayTimestamp();
 	std::cout
 		<< " index:" << this->_accountIndex
 		<< ";amount:" << this->_amount
 		<< ";deposits:" << this->_nbDeposits
 		<< ";withdrawals:" << this->_nbWithdrawals << std::endl;
+}
+
+void Account::_displayTimestamp(void)
+{
+	std::cout << "[19920104_091532]";
 }
