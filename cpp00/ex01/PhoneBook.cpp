@@ -6,17 +6,17 @@
 void printContactIndex(Contact &contact)
 {
 	std::cout <<
-		std::setw(contact.firstName.length()) << "First Name" << '|' <<
-		std::setw(contact.lastName.length()) << "Last Name" << '|' <<
-		std::setw(contact.nickname.length()) << "Nickname" << '|' <<
-		std::setw(contact.phoneNumber.length()) << "Phone Number" << '|' <<
-		std::setw(contact.darkestSecret.length()) << "Darkest Secret" << '|' << std::endl;
+		std::setw(contact.getFirstName().length()) << "First Name" << '|' <<
+		std::setw(contact.getLastName().length()) << "Last Name" << '|' <<
+		std::setw(contact.getNickname().length()) << "Nickname" << '|' <<
+		std::setw(contact.getPhoneNumber().length()) << "Phone Number" << '|' <<
+		std::setw(contact.getDarkestSecret().length()) << "Darkest Secret" << '|' << std::endl;
 	std::cout <<
-		std::setw(10) << contact.firstName << '|' <<
-		std::setw(9) << contact.lastName << '|' <<
-		std::setw(8) << contact.nickname << '|' <<
-		std::setw(12) << contact.phoneNumber << '|' <<
-		std::setw(14) << contact.darkestSecret << '|' << std::endl;
+		std::setw(10) << contact.getFirstName() << '|' <<
+		std::setw(9) << contact.getLastName() << '|' <<
+		std::setw(8) << contact.getNickname() << '|' <<
+		std::setw(12) << contact.getPhoneNumber() << '|' <<
+		std::setw(14) << contact.getDarkestSecret() << '|' << std::endl;
 }
 
 void printTenSearch(std::string s)
@@ -33,18 +33,18 @@ void printTenSearch(std::string s)
 		std::cout << std::setw(10) << s << '|';
 }
 
-void searchContacts(Contact contacts[8])
+void searchContacts(PhonebookClass &phonebook)
 {
 	int index = -1;
 	std::string	buf;
 
 	std::cout << "   Index  |First Name| Last Name|  Nickname|" << std::endl;
-	while (contacts[++index].firstName.compare(""))
+	while (phonebook.contacts[++index].getFirstName().empty() == false)
 	{
 		std::cout << std::setw(10) << (int)index << "|";
-		printTenSearch(contacts[index].firstName);
-		printTenSearch(contacts[index].lastName);
-		printTenSearch(contacts[index].nickname);
+		printTenSearch(phonebook.contacts[index].getFirstName());
+		printTenSearch(phonebook.contacts[index].getLastName());
+		printTenSearch(phonebook.contacts[index].getNickname());
 		std::cout << std::endl;
 	}
 	if (index == 0)
@@ -54,7 +54,7 @@ void searchContacts(Contact contacts[8])
 	{
 		if (buf.length() == 1 && buf[0] - 48 >= 0 && buf[0] - 48 < index)
 		{
-			printContactIndex(contacts[buf[0] - 48]);
+			printContactIndex(phonebook.contacts[buf[0] - 48]);
 			break ;
 		}
 		else
@@ -65,9 +65,9 @@ void searchContacts(Contact contacts[8])
 void addContact(Contact contacts[8])
 {
 	int index = 0;
-	std::string	copy;
+	std::string	buf;
 
-	while (index < 8 && contacts[index].firstName.compare("") != 0)
+	while (index < 8 && contacts[index].getFirstName().empty() == false)
 		++index;
 	if (index == 8)
 	{
@@ -78,27 +78,32 @@ void addContact(Contact contacts[8])
 	do {
 		std::cout << "Enter First Name: ";
 	}
-	while (std::getline(std::cin, contacts[index].firstName) && contacts[index].firstName.compare("") == 0);
+	while (std::getline(std::cin, buf) && buf.empty() == true);
+	contacts[index].setFirstName(buf.substr(0, buf.length()));
 	
 	do {
 		std::cout << "Enter Last Name: ";
 	}
-	while (std::getline(std::cin, contacts[index].lastName) && contacts[index].lastName.compare("") == 0);
+	while (std::getline(std::cin, buf) && buf.empty() == true);
+	contacts[index].setLastName(buf.substr(0, buf.length()));
 
 	do {
 		std::cout << "Enter Nickname: ";
 	}
-	while (std::getline(std::cin, contacts[index].nickname) && contacts[index].nickname.compare("") == 0);
+	while (std::getline(std::cin, buf) && buf.empty() == true);
+	contacts[index].setNickname(buf.substr(0, buf.length()));
 
 	do {
 		std::cout << "Enter Phone Number: ";
 	}
-	while (std::getline(std::cin, contacts[index].phoneNumber) && contacts[index].phoneNumber.compare("") == 0);
+	while (std::getline(std::cin, buf) && buf.empty() == true);
+	contacts[index].setPhoneNumber(buf.substr(0, buf.length()));
 
 	do {
 		std::cout << "Enter Darkest Secret: ";
 	}
-	while (std::getline(std::cin, contacts[index].darkestSecret) && contacts[index].darkestSecret.compare("") == 0);
+	while (std::getline(std::cin, buf) && buf.empty() == true);
+	contacts[index].setDarkestSecret(buf.substr(0, buf.length()));
 }
 
 int	main(void)
@@ -112,9 +117,9 @@ int	main(void)
 		if (buf.compare("ADD") == 0)
 			addContact(phonebook.contacts);
 		else if (buf.compare("SEARCH") == 0)
-			searchContacts(phonebook.contacts);
+			searchContacts(phonebook);
 		else if (buf.compare("EXIT") == 0)
-			return 0;
+			break ;
 	}
 	return (0);
 }
