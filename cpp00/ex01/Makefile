@@ -7,7 +7,7 @@ OBJS_SRCS	=	$(SRCS:.c=.o)
 .c.o:
 				${CC} ${CFLAGS} -c ${INCLUDES} $< -o ${<:.cpp=.o}
 
-INCLUDES	=	-I./includes/
+INCLUDES	=	-I.
 
 NAME		=	phoneBook
 
