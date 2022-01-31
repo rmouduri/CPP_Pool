@@ -1,11 +1,11 @@
 #include <iostream>
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-	ScavTrap a("Jean");
-	ScavTrap b(a);
-	ScavTrap c;
+	FragTrap a("Jean");
+	FragTrap b(a);
+	FragTrap c;
 
 	std::cout << std::endl;
 
@@ -37,8 +37,8 @@ int main(void)
 
 	std::cout << std::endl;
    
-	a.guardGate();
-	
+	a.highFivesGuys();
+
 	std::cout << std::endl;
 
 	return 0;
