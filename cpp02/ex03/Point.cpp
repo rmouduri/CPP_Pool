@@ -27,8 +27,8 @@ const Fixed Point::getY(void) const
 
 Point& Point::operator=(const Point& rhs)
 {
-	*(Fixed *)&this->_x = rhs._x;
-	*(Fixed *)&this->_y = rhs._y;
+	*(Fixed *)&this->_x = rhs.getX();
+	*(Fixed *)&this->_y = rhs.getY();
 	return *this;
 }
 
