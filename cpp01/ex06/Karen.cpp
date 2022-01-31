@@ -33,6 +33,7 @@ void Karen::error(void)
 void Karen::complain(std::string level)
 {
 	std::string tab[4] = {"ERROR", "WARNING", "INFO", "DEBUG"};
+	void (Karen::*f[4])(void) = {&Karen::error, &Karen::warning, &Karen::info, &Karen::debug};
 	int i = 0;
 
 	while (i < 4 && tab[i].compare(level))
@@ -43,11 +44,17 @@ void Karen::complain(std::string level)
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		break ;
 	case 3:
-		this->debug();
+		while (i >= 0)
+			(this->*f[i--])();
+		break ;
 	case 2:
-		this->info();
+		while (i >= 0)
+			(this->*f[i--])();
+		break ;
 	case 1:
-		this->warning();
+		while (i >= 0)
+			(this->*f[i--])();
+		break ;
 	case 0:
 		this->error();
 	}

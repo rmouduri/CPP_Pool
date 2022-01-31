@@ -3,7 +3,6 @@
 
 Zombie::Zombie(void)
 {
-	this->announce();
 	return ;
 }
 
