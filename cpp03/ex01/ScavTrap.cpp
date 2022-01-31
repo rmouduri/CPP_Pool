@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(std::string const name)
 	return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &copy)
+ScavTrap::ScavTrap(ScavTrap const &copy): ClapTrap()
 {
 	this->_name = copy._name;
 	this->_hitPoints = 100;
@@ -34,6 +34,15 @@ ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << _name << " deleted" << std::endl;
 	return ;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &copy)
+{
+	this->_name = copy._name;
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	return *this;
 }
 
 void ScavTrap::attack(const std::string &target)

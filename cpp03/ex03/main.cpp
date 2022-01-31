@@ -7,7 +7,7 @@ int main(void)
 
 	std::cout << std::endl;
 
-	// a.attack("Norbert");
+	a.attack("Norbert");
 
 	std::cout << std::endl;
 
@@ -24,7 +24,7 @@ int main(void)
 
 	std::cout << std::endl;
 
-	// a.attack("Norbert");
+	a.attack("Norbert");
 	a.beRepaired(5);
 
 	std::cout << std::endl;
