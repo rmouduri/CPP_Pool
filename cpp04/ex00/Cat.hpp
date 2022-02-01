@@ -1,0 +1,19 @@
+#ifndef __CAT_HPP__
+# define __CAT_HPP__
+
+# include <iostream>
+# include "Animal.hpp"
+
+class Cat: public Animal
+{
+public:
+	Cat();
+	Cat(const Cat &newCat);
+	~Cat();
+
+	Cat& operator=(const Cat& newCat);
+	
+	virtual void makeSound() const;
+};
+
+#endif
