@@ -18,7 +18,8 @@ public:
 	virtual Animal& operator=(const Animal& newAnimal);
 	
 	virtual void makeSound() const;
-	virtual Brain *getBrain() const;
+	void setIdea(int index, std::string newIdea);
+	const std::string getIdea(int index) const;
 };
 
 #endif

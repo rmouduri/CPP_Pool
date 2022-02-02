@@ -18,7 +18,6 @@ public:
 	virtual Animal& operator=(const Animal& newAnimal);
 	const std::string getType() const;
 	virtual void makeSound() const;
-	virtual Brain *getBrain() const = 0;
 };
 
 #endif

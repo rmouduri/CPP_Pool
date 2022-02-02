@@ -27,11 +27,8 @@ Cat& Cat::operator=(const Cat& newCat)
 {
 	std::cout << "Cat Assignement Operator called" << std::endl;
 	this->type = newCat.type;
-	if (this->brain)
-		delete this->brain;
-	this->brain = new Brain;
 	for (int i = 0; i < 100; ++i)
-		this->brain->ideas[i] = newCat.brain->ideas[i];
+		this->setIdea(i, newCat.getIdea(i));
 	return *this;
 }
 
@@ -40,15 +37,22 @@ void Cat::makeSound(void) const
 	std::cout << "* Meow *" << std::endl;
 }
 
-Brain *Cat::getBrain(void) const
-{
-	return this->brain;
-}
-
 Animal& Cat::operator=(const Animal& newAnimal)
 {
+	Cat *tmp = dynamic_cast<Cat *>(const_cast<Animal *>(&newAnimal));
+
 	std::cout << "Cat Animal Assignement Operator called" << std::endl;
 	for (int i = 0; i < 100; i++)
-		this->brain->ideas[i] = newAnimal.getBrain()->ideas[i];	
+		this->setIdea(i, tmp->getIdea(i));
 	return *this;
+}
+
+void Cat::setIdea(int index, std::string newIdea)
+{
+	this->brain->ideas[index] = newIdea;
+}
+
+const std::string Cat::getIdea(int index) const
+{
+	return this->brain->ideas[index];
 }
