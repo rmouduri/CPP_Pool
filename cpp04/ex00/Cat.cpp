@@ -6,7 +6,7 @@ Cat::Cat(void)
 	return ;
 }
 
-Cat::Cat(const Cat &newCat)
+Cat::Cat(const Cat &newCat): Animal()
 {
 	this->type = newCat.type;
 	return ;
@@ -25,5 +25,5 @@ Cat& Cat::operator=(const Cat& newCat)
 
 void Cat::makeSound(void) const
 {
-	std::cout << "Meow" << std::endl;
+	std::cout << "* Meow *" << std::endl;
 }

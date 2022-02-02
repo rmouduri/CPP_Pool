@@ -11,7 +11,7 @@ OBJS_SRCS	=	$(SRCS:.c=.o)
 
 INCLUDES	=	-I.
 
-NAME		=	Brain
+NAME		=	Animal
 
 CFLAGS      =   -Wall -Werror -Wextra -std=c++98
 

@@ -2,6 +2,7 @@
 
 Animal::Animal(void)
 {
+	std::cout << "Default Animal Constructor called" << std::endl;
 	return ;
 }
 
@@ -12,17 +13,19 @@ Animal::Animal(const std::string newType): type(newType)
 
 Animal::Animal(const Animal &newAnimal): type(newAnimal.type)
 {
+	std::cout << "Copy Animal Constructor called" << std::endl;
 	return ;
 }
 
 Animal::~Animal(void)
 {
-	std::cout << "Animal of type " << this->type << " destroyed." << std::endl;
+	std::cout << "Animal Destructor called" << std::endl;
 	return ;
 }
 
 Animal& Animal::operator=(const Animal& newAnimal)
 {
+	std::cout << "Animal Assignement Operator called" << std::endl;
 	this->type = newAnimal.type;
 	return *this;
 }
@@ -34,5 +37,5 @@ const std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	std::cout << "Prout" << std::endl;
+	std::cout << "* Universal Animal Sound *" << std::endl;
 }

@@ -6,7 +6,7 @@ WrongCat::WrongCat(void)
 	return ;
 }
 
-WrongCat::WrongCat(const WrongCat &newWrongCat)
+WrongCat::WrongCat(const WrongCat &newWrongCat): WrongAnimal()
 {
 	this->type = newWrongCat.type;
 	return ;
@@ -25,5 +25,5 @@ WrongCat& WrongCat::operator=(const WrongCat& newWrongCat)
 
 void WrongCat::makeSound(void) const
 {
-	std::cout << "Wrong Meow" << std::endl;
+	std::cout << "* Wrong Meow *" << std::endl;
 }

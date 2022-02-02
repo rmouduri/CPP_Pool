@@ -8,17 +8,17 @@
 class Dog: public Animal
 {
 private:
-	Brain *_brain;
+	Brain *brain;
 public:
 	Dog();
 	Dog(const Dog &newDog);
-	~Dog();
+	virtual ~Dog();
 
 	Dog& operator=(const Dog& newDog);
-	virtual Animal& operator=(const Animal &newAnimal);
+	virtual Animal& operator=(const Animal& newAnimal);
 	
 	virtual void makeSound() const;
-	virtual Brain* getBrain() const;
+	virtual Brain *getBrain() const;
 };
 
 #endif

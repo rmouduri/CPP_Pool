@@ -5,12 +5,12 @@
 
 int main(void)
 {
-	Animal	*animals[6];
+	Animal	*animals[4];
 	Brain	*brain;
 
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 4; ++i)
 	{
-		if (i < 6 / 2)
+		if (i % 2 == 0)
 			animals[i] = new Dog();
 		else
 			animals[i] = new Cat();
@@ -18,20 +18,15 @@ int main(void)
 	}
 	std::cout << std::endl;
 
-	brain = animals[3]->getBrain();
-	brain->ideas[0] = "I'm hungry";
-	brain->ideas[1] = "That's a strange idea I'm having";
-	brain->ideas[2] = "Ball!!!!!";
-	brain->ideas[3] = "Squirrel!!!!!";
-	std::cout << animals[3]->getBrain()->ideas[0] << std::endl;
-
-	*animals[1] = *animals[3];
-	std::cout << animals[1]->getBrain()->ideas[2] << std::endl;
-	brain->ideas[2] = "OK";
-	std::cout << animals[1]->getBrain()->ideas[2] << std::endl;
+	brain = animals[0]->getBrain();
+	brain->ideas[0] = "I want to eat";
+	*animals[2] = *animals[0];
+	brain->ideas[0] = "I want to sleep";
+	std::cout << "Animal 0 Brain: " << animals[0]->getBrain()->ideas[0] << std::endl;
+	std::cout << "Animal 2 Brain: " << animals[2]->getBrain()->ideas[0] << std::endl;
 
 	std::cout << std::endl;
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 4; i++)
 		delete animals[i];
 	return 0;
 }

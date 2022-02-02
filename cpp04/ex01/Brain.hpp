@@ -7,12 +7,11 @@ class Brain
 {
 public:
 	Brain();
-	Brain(const Brain &newBrain);
+	Brain(const Brain &brain);
 	~Brain();
 
-	Brain& operator=(const Brain &newBrain);
-
+	Brain& operator=(const Brain &brain);
 	std::string ideas[100];
 };
 
-#endif
+# endif //__BRAIN_HPP__

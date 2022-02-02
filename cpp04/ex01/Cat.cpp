@@ -2,48 +2,53 @@
 
 Cat::Cat(void)
 {
+	std::cout << "Default Cat Constructor called" << std::endl;
 	this->type = "Cat";
-	this->_brain = new Brain;
+	this->brain = new Brain;
 	return ;
 }
 
-Cat::Cat(const Cat &newCat)
+Cat::Cat(const Cat &newCat): Animal()
 {
+	std::cout << "Copy Cat Constructor called" << std::endl;
 	this->type = newCat.type;
-	this->_brain = new Brain;
+	this->brain = new Brain;
 	return ;
 }
 
 Cat::~Cat(void)
 {
-	if (this->_brain)
-		delete this->_brain;
-	std::cout << "Cat destroyed." << std::endl;
+	std::cout << "Cat Destructor called" << std::endl;
+	delete this->brain;
 	return ;
 }
 
 Cat& Cat::operator=(const Cat& newCat)
 {
-	std::cout << "Cat cpy" << std::endl;
+	std::cout << "Cat Assignement Operator called" << std::endl;
 	this->type = newCat.type;
-	*this->_brain = *newCat._brain;
+	if (this->brain)
+		delete this->brain;
+	this->brain = new Brain;
+	for (int i = 0; i < 100; ++i)
+		this->brain->ideas[i] = newCat.brain->ideas[i];
 	return *this;
 }
 
 void Cat::makeSound(void) const
 {
-	std::cout << "Meow" << std::endl;
+	std::cout << "* Meow *" << std::endl;
 }
 
-Brain* Cat::getBrain(void) const
+Brain *Cat::getBrain(void) const
 {
-	return this->_brain;
+	return this->brain;
 }
 
-Animal&	Cat::operator=( const Animal &newAnimal )
+Animal& Cat::operator=(const Animal& newAnimal)
 {
-	std::cout << "Animal assignement operator from Cat" << std::endl;
-	this->type = newAnimal.getType();
-	*this->_brain = *newAnimal.getBrain();
+	std::cout << "Cat Animal Assignement Operator called" << std::endl;
+	for (int i = 0; i < 100; i++)
+		this->brain->ideas[i] = newAnimal.getBrain()->ideas[i];	
 	return *this;
 }

@@ -33,5 +33,5 @@ const std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	std::cout << "Prout" << std::endl;
+	std::cout << "* Universal Animal Sound *" << std::endl;
 }
