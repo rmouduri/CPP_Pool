@@ -39,11 +39,11 @@ void Cat::makeSound(void) const
 
 AAnimal& Cat::operator=(const AAnimal& newAAnimal)
 {
-	Cat *tmp = dynamic_cast<Cat *>(const_cast<AAnimal *>(&newAAnimal));
+	Cat tmp = *dynamic_cast<Cat *>(const_cast<AAnimal *>(&newAAnimal));
 
 	std::cout << "Cat AAnimal Assignement Operator called" << std::endl;
 	for (int i = 0; i < 100; i++)
-		this->setIdea(i, tmp->getIdea(i));
+		this->setIdea(i, tmp.getIdea(i));
 	return *this;
 }
 

@@ -39,11 +39,11 @@ void Dog::makeSound(void) const
 
 AAnimal& Dog::operator=(const AAnimal& newAAnimal)
 {
-	Dog *tmp = dynamic_cast<Dog *>(const_cast<AAnimal *>(&newAAnimal));
+	Dog tmp = *dynamic_cast<Dog *>(const_cast<AAnimal *>(&newAAnimal));
 
 	std::cout << "Dog AAnimal Assignement Operator called" << std::endl;
 	for (int i = 0; i < 100; i++)
-		this->setIdea(i, tmp->getIdea(i));
+		this->setIdea(i, tmp.getIdea(i));
 	return *this;
 }
 
