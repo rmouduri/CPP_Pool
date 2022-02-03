@@ -7,7 +7,7 @@ int main(int ac, char **av)
 {
 	if (ac != 4)
 	{
-		std::cout << "Need 3 parameters" << std::endl;
+		std::cout << "Need 3 parameters: [File to open] [String to replace] [Replacement string]" << std::endl;
 		return 1;
 	}
 
@@ -45,7 +45,7 @@ int main(int ac, char **av)
 	}
 	else
 	{
-		std::cout << "Invalid File" << std::endl;
+		std::cout << "Invalid File: " << av[1] << std::endl;
 		return 2;
 	}
 	return 0;

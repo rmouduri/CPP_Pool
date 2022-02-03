@@ -1,19 +1,19 @@
-#include <iostream>
-
 #ifndef __ZOMBIE_HPP__
 # define __ZOMBIE_HPP__
+
+# include <iostream>
 
 class Zombie
 {
 private:
-    std::string _name;
+	std::string _name;
 
 public:
-    Zombie();
-    ~Zombie();
+	Zombie();
+	~Zombie();
 
-    void announce() const;
-    void setZombieName(std::string);
+	void announce() const;
+	void setZombieName(std::string);
 };
 
 Zombie *zombieHorde(int N, std::string name);

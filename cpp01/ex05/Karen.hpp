@@ -1,7 +1,7 @@
-#include <iostream>
-
 #ifndef __KAREN_HPP__
 # define __KAREN_HPP__
+
+# include <iostream>
 
 class Karen
 {

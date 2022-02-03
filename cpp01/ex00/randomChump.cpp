@@ -3,7 +3,7 @@
 
 void randomChump(std::string name)
 {
-    Zombie zombie = Zombie(name);
+    Zombie zombie(name);
 
     zombie.announce();
 }
