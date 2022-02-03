@@ -22,12 +22,33 @@ int main(void)
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+	std::cout << "\n\n";
+
+
+	Ice *newIce = new Ice();
+	Cure *newCure = new Cure();
+
+	src->learnMateria(newIce); // newIce added
+	src->learnMateria(newIce); // newIce not added because same pointer already added
+	src->learnMateria(new Cure()); // Cure added, src now has 4 materias
+	src->learnMateria(newCure); // Nothing happens, already 4 materias
+
 	me->use(0, *bob);
 	me->use(1, *bob);
 
-	delete bob;
-	delete me;
-	delete src;
+	// me already has 2 materias
+	me->equip(src->createMateria("ice")); // me now has 3 materias
+	me->equip(src->createMateria("ice")); // me now has 4 materias
+	me->equip(newCure);					  // Nothing happens, already 4 materias
 
+	delete bob;
+	std::cout << std::endl;
+	delete me;
+	std::cout << std::endl;
+	delete src;
+	delete newCure;
 	return 0;
 }

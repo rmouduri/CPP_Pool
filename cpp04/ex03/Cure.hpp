@@ -12,7 +12,7 @@ private:
 public:
 	Cure();
 	Cure(const Cure& newCure);
-	~Cure();
+	virtual ~Cure();
 
 	Cure& operator=(const Cure& newCure);
 

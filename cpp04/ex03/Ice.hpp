@@ -12,7 +12,7 @@ private:
 public:
 	Ice();
 	Ice(const Ice& newIce);
-	~Ice();
+	virtual ~Ice();
 
 	Ice& operator=(const Ice& newIce);
 
