@@ -5,7 +5,7 @@ SRCS		=	main.cpp	\
 				MateriaSource.cpp	\
 				Character.cpp
 
-OBJS_SRCS	=	$(SRCS:.c=.o)
+OBJS_SRCS	=	${SRCS:.cpp=.o}
 
 .c.o:
 				${CC} ${CFLAGS} -c ${INCLUDES} $< -o ${<:.cpp=.o}
@@ -21,18 +21,16 @@ CC			=	c++
 RM			=	rm -f
 
 ${NAME}:		${OBJS_SRCS}
-				${CC} -o ${NAME} ${SRCS} ${CFLAGS} ${INCLUDES}
+				${CC} -o ${NAME} ${OBJS_SRCS} ${CFLAGS} ${INCLUDES}
 
 all:			${NAME}
 
 clean:
-				find . -type f \( -name "*~" -o -name "#*#" -o -name "*.o" -o -name "*.gch" \) -delete
+				${RM} ${OBJS_SRCS}
 
 fclean:			clean
 				${RM} ${NAME}
 
 re:				fclean all
-
-mv_objs:		find . -type f -name "*.o" -exec mv -ft objs {} +
 
 .PHONY:			all clean fclean re

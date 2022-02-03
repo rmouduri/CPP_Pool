@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Ice.hpp"
 
-Ice::Ice(void): AMateria("ice"), type("ice")
+Ice::Ice(void): AMateria("ice"), _type("ice")
 {
 	std::cout << "Default Constructor for Ice called" << std::endl;
 	return ;

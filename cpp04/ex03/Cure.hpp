@@ -8,7 +8,7 @@
 class Cure: public AMateria
 {
 private:
-	const std::string type;
+	const std::string _type;
 public:
 	Cure();
 	Cure(const Cure& newCure);

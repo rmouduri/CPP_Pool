@@ -34,6 +34,8 @@ MateriaSource::~MateriaSource(void)
 MateriaSource& MateriaSource::operator=(const MateriaSource& newMateriaSource)
 {
 	std::cout << "MateriaSource Assignement Operator called" << std::endl;
+	if (this == &newMateriaSource)
+		return *this;
 	for (int i = 0; i < 4; ++i)
 	{
 		delete this->_materias[i];
@@ -45,14 +47,14 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& newMateriaSource)
 
 void MateriaSource::learnMateria(AMateria *newAMateria)
 {
-	int i = 0;
+	int i = -1;
 
-	while (i < 4 && this->_materias[i])
-	{
+	while (++i < 4 && this->_materias[i])
 		if (this->_materias[i] == newAMateria)
 			return ;
+	i = 0;
+	while (i < 4 && this->_materias[i])
 		++i;
-	}
 	if (i == 4)
 		return ;
 	this->_materias[i] = newAMateria;
@@ -62,7 +64,7 @@ AMateria *MateriaSource::createMateria(std::string const & type)
 {
 	int i = 0;
 
-	while (i < 4 && this->_materias[i]->getType().compare(type))
+	while (i < 4 && this->_materias[i] && this->_materias[i]->getType().compare(type))
 		++i;
 	if (i == 4)
 		return 0;

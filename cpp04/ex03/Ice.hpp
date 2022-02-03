@@ -8,7 +8,7 @@
 class Ice: public AMateria
 {
 private:
-	const std::string type;
+	const std::string _type;
 public:
 	Ice();
 	Ice(const Ice& newIce);

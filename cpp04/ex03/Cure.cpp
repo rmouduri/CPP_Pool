@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Cure.hpp"
 
-Cure::Cure(void): AMateria("cure"), type("cure")
+Cure::Cure(void): AMateria("cure"), _type("cure")
 {
 	std::cout << "Default Constructor for Cure called" << std::endl;
 	return ;

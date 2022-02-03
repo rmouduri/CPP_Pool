@@ -30,6 +30,8 @@ Character::~Character(void)
 Character& Character::operator=(const Character& newCharacter)
 {
 	std::cout << "Character Assignement Operator called" << std::endl;
+	if (this == &newCharacter)
+		return *this;
 	this->_name = newCharacter._name;
 	for (int i = 0; i < 4; ++i)
 	{
@@ -56,14 +58,14 @@ void Character::use(int idx, ICharacter &target)
 
 void Character::equip(AMateria *m)
 {
-	int i = 0;
+	int i = -1;
 
-	while (i < 4 && this->_inventory[i])
-	{
+	while (++i < 4)
 		if (this->_inventory[i] == m)
 			return ;
+	i = 0;
+	while (i < 4 && this->_inventory[i])
 		++i;
-	}
 	if (i == 4)
 		return ;
 	this->_inventory[i] = m;
@@ -73,8 +75,5 @@ void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
 		return ;
-	if (this->_inventory[idx] == 0)
-		return ;
-	//STOCK MATERIA AT this->_inventory[idx]
 	this->_inventory[idx] = 0;
 }
