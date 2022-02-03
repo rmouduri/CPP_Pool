@@ -12,7 +12,7 @@ OBJS_SRCS	=	$(SRCS:.c=.o)
 
 INCLUDES	=	-I.
 
-NAME		=	AAnimal
+NAME		=	Materia
 
 CFLAGS      =   -Wall -Werror -Wextra -std=c++98
 

@@ -2,6 +2,7 @@
 # define __ICHARACTER_HPP__
 
 # include <iostream>
+class ICharacter;
 # include "AMateria.hpp"
 
 class ICharacter
