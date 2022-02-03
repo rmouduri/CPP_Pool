@@ -3,8 +3,9 @@
 
 # include <iostream>
 # include "ICharacter.hpp"
+# include "AMateria.hpp"
 
-class Ice
+class Ice: public AMateria
 {
 private:
 	const std::string type;
@@ -16,6 +17,7 @@ public:
 	Ice& operator=(const Ice& newIce);
 
 	virtual void use(ICharacter& target);
+	virtual AMateria* clone() const; 
 };
 
 # endif //__ICE_HPP__

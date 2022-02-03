@@ -1,7 +1,9 @@
 SRCS		=	main.cpp	\
 				AMateria.cpp	\
 				Ice.cpp	\
-				Cure.cpp
+				Cure.cpp	\
+				MateriaSource.cpp	\
+				Character.cpp
 
 OBJS_SRCS	=	$(SRCS:.c=.o)
 

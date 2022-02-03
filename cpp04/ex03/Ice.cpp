@@ -1,13 +1,13 @@
 #include <iostream>
 #include "Ice.hpp"
 
-Ice::Ice(void): type("ice")
+Ice::Ice(void): AMateria("ice"), type("ice")
 {
 	std::cout << "Default Constructor for Ice called" << std::endl;
 	return ;
 }
 
-Ice::Ice(const Ice& newIce): type("ice")
+Ice::Ice(__attribute((unused))const Ice& newIce): AMateria("ice"), type("ice")
 {
 	std::cout << "Copy Constructor for Ice called" << std::endl;
 	return ;
@@ -19,7 +19,7 @@ Ice::~Ice(void)
 	return ;
 }
 
-Ice& Ice::operator=(const Ice& newIce)
+Ice& Ice::operator=(__attribute((unused))const Ice& newIce)
 {
 	std::cout << "Ice Assignement Operator called" << std::endl;
 	return *this;
@@ -28,4 +28,9 @@ Ice& Ice::operator=(const Ice& newIce)
 void Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
+
+AMateria *Ice::clone(void) const
+{
+	return new Ice;
 }
