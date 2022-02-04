@@ -5,11 +5,11 @@
 # include "AMateria.hpp"
 # include "ICharacter.hpp"
 
-class Character//: public ICharacter
+class Character: public ICharacter
 {
 private:
 	std::string	_name;
-	AMateria	**_inventory;
+	AMateria	*_inventory[4];
 public:
 	Character(std::string name);
 	Character(const Character& newCharacter);

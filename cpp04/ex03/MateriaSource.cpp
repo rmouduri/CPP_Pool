@@ -1,38 +1,58 @@
 #include <iostream>
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void): _materias(new AMateria*[4])
+MateriaSource::MateriaSource(void): _materias()
 {
 	std::cout << "Default Constructor for MateriaSource called" << std::endl;
-	for (int i = 0; i < 4; ++i)
-		this->_materias[i] = 0;
 	return ;
 }
 
-MateriaSource::MateriaSource(__attribute((unused))const MateriaSource& newMateriaSource): _materias(new AMateria*[4])
+MateriaSource::MateriaSource(const MateriaSource& newMateriaSource): _materias()
 {
 	std::cout << "Copy Constructor for MateriaSource called" << std::endl;
 	for (int i = 0; i < 4; ++i)
-		this->_materias[i] = 0;
+	{
+		delete this->_materias[i];
+		if (newMateriaSource._materias[i])
+			this->_materias[i] = newMateriaSource._materias[i]->clone();
+	}
 	return ;
 }
 
 MateriaSource::~MateriaSource(void)
 {
 	std::cout << "Default Destructor for MateriaSource called" << std::endl;
+	for (int i = 0; i < 4; ++i)
+	{
+		std::cout << "materia: " << i << std::endl;
+		if (this->_materias[i])
+			delete this->_materias[i];
+	}
 	return ;
 }
 
-MateriaSource& MateriaSource::operator=(__attribute((unused))const MateriaSource& newMateriaSource)
+MateriaSource& MateriaSource::operator=(const MateriaSource& newMateriaSource)
 {
 	std::cout << "MateriaSource Assignement Operator called" << std::endl;
+	if (this == &newMateriaSource)
+		return *this;
+	for (int i = 0; i < 4; ++i)
+	{
+		delete this->_materias[i];
+		if (newMateriaSource._materias[i])
+			this->_materias[i] = newMateriaSource._materias[i]->clone();
+	}
 	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria *newAMateria)
 {
-	int i = 0;
+	int i = -1;
 
+	while (++i < 4 && this->_materias[i])
+		if (this->_materias[i] == newAMateria)
+			return ;
+	i = 0;
 	while (i < 4 && this->_materias[i])
 		++i;
 	if (i == 4)
@@ -44,7 +64,7 @@ AMateria *MateriaSource::createMateria(std::string const & type)
 {
 	int i = 0;
 
-	while (i < 4 && this->_materias[i]->getType().compare(type))
+	while (i < 4 && this->_materias[i] && this->_materias[i]->getType().compare(type))
 		++i;
 	if (i == 4)
 		return 0;
