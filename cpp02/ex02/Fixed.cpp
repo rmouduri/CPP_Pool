@@ -6,7 +6,7 @@
 /*   By: rmouduri <rmouduri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:07:15 by rmouduri          #+#    #+#             */
-/*   Updated: 2022/02/03 15:51:12 by rmouduri         ###   ########.fr       */
+/*   Updated: 2022/02/04 11:53:25 by rmouduri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,28 +85,39 @@ Fixed& Fixed::operator=(const Fixed& rhs)
 	return *this;
 }
 
-Fixed& Fixed::operator+(const Fixed& rhs)
+Fixed Fixed::operator+(const Fixed& rhs)
 {
-	this->setRawBits((this->toFloat() + rhs.toFloat()) * myPow(2, this->_bits));
-	return *this;
+	Fixed f;
+
+	f.setRawBits(myPow(2, this->_bits) * (this->toFloat() + rhs.toFloat()));
+	return f;
 }
 
-Fixed& Fixed::operator-(const Fixed& rhs)
+Fixed Fixed::operator-(const Fixed& rhs)
 {
-	this->setRawBits((this->toFloat() - rhs.toFloat()) * myPow(2, this->_bits));
-	return *this;
+	Fixed f;
+
+	// f.setRawBits(this->getRawBits() - rhs.getRawBits());
+	f.setRawBits(myPow(2, this->_bits) * (this->toFloat() - rhs.toFloat()));
+	return f;
 }
 
-Fixed& Fixed::operator*(const Fixed& rhs)
+Fixed Fixed::operator*(const Fixed& rhs)
 {
-	this->setRawBits((this->toFloat() * rhs.toFloat()) * myPow(2, this->_bits));
-	return *this;
+	Fixed f;
+
+	// f.setRawBits(this->getRawBits() * rhs.getRawBits());
+	f.setRawBits(myPow(2, this->_bits) * (this->toFloat() * rhs.toFloat()));
+	return f;
 }
 
-Fixed& Fixed::operator/(const Fixed& rhs)
+Fixed Fixed::operator/(const Fixed& rhs)
 {
-	this->setRawBits((this->toFloat() / rhs.toFloat()) * myPow(2, this->_bits));
-	return *this;
+	Fixed f;
+
+	// f.setRawBits(this->getRawBits() / rhs.getRawBits());
+	f.setRawBits(myPow(2, this->_bits) * (this->toFloat() / rhs.toFloat()));
+	return f;
 }
 
 bool Fixed::operator<(const Fixed& rhs) const

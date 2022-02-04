@@ -11,6 +11,7 @@ private:
 public:
 	Point();
 	Point(const Fixed x, const Fixed y);
+	Point(float x, float y);
 	Point(Point& copy);
 	~Point();
 

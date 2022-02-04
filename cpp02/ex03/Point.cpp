@@ -10,6 +10,11 @@ Point::Point(const Fixed x, const Fixed y): _x(x), _y(y)
 	return ;
 }
 
+Point::Point(float x, float y): _x(x), _y(y)
+{
+	return ;
+}
+
 Point::Point(Point& copy): _x(copy._x), _y(copy._y)
 {
 	return ;

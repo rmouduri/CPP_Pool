@@ -21,6 +21,12 @@ int main(int ac, char **av)
 		Point c(xc, yc);
 		Point p(xp, yp);
 
+		// Point a(strtof(av[1], NULL), strtof(av[2], NULL));
+		// Point b(strtof(av[3], NULL), strtof(av[4], NULL));
+		// Point c(strtof(av[5], NULL), strtof(av[6], NULL));
+		// Point p(strtof(av[7], NULL), strtof(av[8], NULL));
+
+
 		std::cout << (bsp(a, b, c, p) == true ? "True" : "False") << std::endl;
 	}
 	else

@@ -6,8 +6,8 @@
 class Fixed
 {
 private:
-	static const int    _bits = 8;
-	int                 _fixed;
+	static const int	_bits = 8;
+	int					_fixed;
 public:
 	Fixed();
 	~Fixed();
@@ -16,10 +16,10 @@ public:
 	Fixed(const float f);
 
 	Fixed&	operator=(const Fixed& rhs);
-	Fixed&	operator+(const Fixed& rhs);
-	Fixed&	operator-(const Fixed& rhs);
-	Fixed&	operator*(const Fixed& rhs);
-	Fixed&	operator/(const Fixed& rhs);
+	Fixed	operator+(const Fixed& rhs);
+	Fixed	operator-(const Fixed& rhs);
+	Fixed	operator*(const Fixed& rhs);
+	Fixed	operator/(const Fixed& rhs);
 
 	Fixed&	operator++(void);
 	Fixed	operator++(int);
