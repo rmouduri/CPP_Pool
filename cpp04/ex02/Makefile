@@ -6,14 +6,14 @@ SRCS		=	main.cpp	\
 
 OBJS_SRCS	=	$(SRCS:.cpp=.o)
 
-%.o: %.cpp	$(INCLUDES)
-			$(CC) $(CFLAGS) -c $<  -o $(<:.cpp=.o)
+%.o: 			%.cpp
+				${CC} ${CFLAGS} ${INCLUDES} -c $<  -o ${<:.cpp=.o}
 
 INCLUDES	=	-I.
 
 NAME		=	AAnimal
 
-CFLAGS      =   -Wall -Werror -Wextra -std=c++98
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
 CC			=	c++
 
