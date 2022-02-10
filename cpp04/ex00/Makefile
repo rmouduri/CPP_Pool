@@ -7,7 +7,7 @@ SRCS		=	main.cpp	\
 
 OBJS_SRCS	=	$(SRCS:.cpp=.o)
 
-%.o: 			%.cpp
+%.o:			%.cpp
 				${CC} ${CFLAGS} ${INCLUDES} -c $<  -o ${<:.cpp=.o}
 
 INCLUDES	=	-I.
