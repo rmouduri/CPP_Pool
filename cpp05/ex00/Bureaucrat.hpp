@@ -2,6 +2,7 @@
 # define __BUREAUCRAT_HPP__
 
 # include <iostream>
+# include <exception>
 
 class Bureaucrat
 {
@@ -9,55 +10,33 @@ private:
 	const std::string	_name;
 	int					_grade;
 public:
+	class GradeTooHighException: public std::exception
+	{
+		public:
+			GradeTooHighException();
+			~GradeTooHighException();
+			virtual const char *what() const throw();
+	};
+	class GradeTooLowException: public std::exception
+	{
+		public:
+			GradeTooLowException();
+			~GradeTooLowException();
+			virtual const char *what() const throw();
+	};
+
 	Bureaucrat();
-	Bureaucrat(const std::string name, const int grade);
-	Bureaucrat(const Bureaucrat& newBureaucrat);
+	Bureaucrat(const std::string name, const int grade) throw();
+	Bureaucrat(const Bureaucrat& newBureaucrat) throw();
 	~Bureaucrat();
 
-	Bureaucrat& operator=(const Bureaucrat& newBureaucrat);
+	Bureaucrat& operator=(const Bureaucrat& newBureaucrat) throw();
 	const std::string getName() const;
 	const int getGrade() const;
+	void promote() throw();
+	void demote() throw();
 };
 
-Bureaucrat::Bureaucrat(void): _name(), _grade(150)
-{
-	std::cout << "Default Constructor for Bureaucrat called" << std::endl;
-	return ;
-}
-
-Bureaucrat::Bureaucrat(const Bureaucrat& newBureaucrat)
-{
-	std::cout << "Copy Constructor for Bureaucrat called" << std::endl;
-	*this = newBureaucrat;
-	return ;
-}
-
-Bureaucrat::Bureaucrat(const std::string name, const int grade): _name(name), _grade(grade)
-{
-	return ;
-}
-Bureaucrat::~Bureaucrat(void)
-{
-	std::cout << "Default Destructor for Bureaucrat called" << std::endl;
-	return ;
-}
-
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat& newBureaucrat)
-{
-	std::cout << "Bureaucrat Assignement Operator called" << std::endl;
-	*(std::string *)&this->_name = newBureaucrat.getName();
-	this->_grade = newBureaucrat.getGrade();
-	return *this;
-}
-
-const std::string Bureaucrat::getName(void) const
-{
-	return this->_name;
-}
-
-const int Bureaucrat::getGrade(void) const
-{
-	return this->_grade;
-}
+std::ostream& operator<<(std::ostream& o, Bureaucrat &outBureaucrat);
 
 # endif //__BUREAUCRAT_HPP__

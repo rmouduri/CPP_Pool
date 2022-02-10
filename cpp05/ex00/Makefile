@@ -1,4 +1,5 @@
 SRCS		=	main.cpp	\
+				Bureaucrat.cpp
 
 OBJS_SRCS	=	${SRCS:.cpp=.o}
 
