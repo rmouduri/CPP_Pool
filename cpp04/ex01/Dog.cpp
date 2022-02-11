@@ -27,6 +27,9 @@ Dog& Dog::operator=(const Dog& newDog)
 {
 	std::cout << "Dog Assignement Operator called" << std::endl;
 	this->type = newDog.type;
+	if (this->brain)
+		delete this->brain;
+	this->brain = new Brain;
 	for (int i = 0; i < 100; ++i)
 		this->setIdea(i, newDog.getIdea(i));
 	return *this;
@@ -42,6 +45,10 @@ Animal& Dog::operator=(const Animal& newAnimal)
 	Dog *tmp = dynamic_cast<Dog *>(const_cast<Animal *>(&newAnimal));
 
 	std::cout << "Dog Animal Assignement Operator called" << std::endl;
+	this->type = tmp->type;
+	if (this->brain)
+		delete this->brain;
+	this->brain = new Brain;
 	for (int i = 0; i < 100; i++)
 		this->setIdea(i, tmp->getIdea(i));
 	return *this;

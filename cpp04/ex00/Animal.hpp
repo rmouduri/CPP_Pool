@@ -12,7 +12,7 @@ public:
 	Animal();
 	Animal(const std::string type);
 	Animal(const Animal &newAnimal);
-	~Animal();
+	virtual ~Animal();
 
 	Animal& operator=(const Animal& newAnimal);
 	const std::string getType() const;

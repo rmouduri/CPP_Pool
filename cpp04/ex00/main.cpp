@@ -17,6 +17,9 @@ int main(void)
 		cat->makeSound(); //will output the cat sound!
 		dog->makeSound();
 		animal->makeSound();
+		delete animal;
+		delete dog;
+		delete cat;
 	}
 	std::cout << std::endl;
 	{
@@ -26,6 +29,8 @@ int main(void)
 		std::cout << wrongCat->getType() << " " << std::endl;
 		wrongCat->makeSound(); //will output the WrongAnimal sound!
 		wrongAnimal->makeSound();
+		delete wrongAnimal;
+		delete wrongCat;
 	}
 	return 0;
 }

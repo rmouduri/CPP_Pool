@@ -44,9 +44,12 @@ int main(void)
 	me->equip(src->createMateria("ice")); // me now has 4 materias
 	me->equip(newCure);					  // Nothing happens, already 4 materias
 
+	me->unequip(1); // unequip materia tmp
+
 	delete bob;
 	std::cout << std::endl;
 	delete me;
+	delete tmp; // need to free tmp because unequipped
 	std::cout << std::endl;
 	delete src;
 	delete newCure;
