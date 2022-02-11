@@ -7,10 +7,23 @@ Ice::Ice(void): AMateria("ice"), _type("ice")
 	return ;
 }
 
+Ice::Ice(const Ice &newIce): AMateria("ice")
+{
+	*this = newIce;
+	std::cout << "Copy Constructor for Ice called" << std::endl;
+	return ;
+}
+
 Ice::~Ice(void)
 {
 	std::cout << "Default Destructor for Ice called" << std::endl;
 	return ;
+}
+
+Ice& Ice::operator=(const Ice& newIce)
+{
+	*(std::string *)&this->_type = newIce._type;
+	return *this;
 }
 
 void Ice::use(ICharacter& target)
