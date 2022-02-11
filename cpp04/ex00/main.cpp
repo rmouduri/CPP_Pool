@@ -26,7 +26,7 @@ int main(void)
 		const WrongAnimal* wrongAnimal = new WrongAnimal();
 		const WrongAnimal* wrongCat = new WrongCat();
 		
-		std::cout << wrongCat->getType() << " " << std::endl;
+		std::cout << wrongCat->getType() << std::endl;
 		wrongCat->makeSound(); //will output the WrongAnimal sound!
 		wrongAnimal->makeSound();
 		delete wrongAnimal;
