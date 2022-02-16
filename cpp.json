@@ -2,6 +2,9 @@
 	"Canonical Class": {
 		"prefix": "cclass",
 		"body": [
+			"#ifndef __$2_HPP__",
+			"# define __$2_HPP__",
+			"",
 			"# include <iostream>",
 			"",
 			"class $1",
@@ -14,6 +17,8 @@
 			"",
 			"\t$1& operator=(const $1& new$1);",
 			"};",
+			"",
+			"std::ostream& operator<<(std::ostream& o, $1 &out$1);",
 			"",
 			"$1::$1(void)",
 			"{",
@@ -37,7 +42,15 @@
 			"{",
 			"\tstd::cout << \"$1 Assignement Operator called\" << std::endl;",
 			"\treturn *this;",
-			"}"
+			"}",
+			"",
+			"std::ostream& operator<<(std::ostream& o, $1 &out$1)",
+			"{",
+			"\to << out$1. << std::endl;",
+			"\treturn o",
+			"}",
+			"",
+			"# endif // __$2_HPP__"
 		],
 		"description": "Canonical class for c++"
 	}
