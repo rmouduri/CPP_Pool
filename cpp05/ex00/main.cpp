@@ -11,7 +11,7 @@ int main(void)
 	Bureaucrat burA("Mike", 1);
 	Bureaucrat burB(burA);
 
-	cout << noName << "\n" << burA << "\n" << burB << "\n";
+	cout << std::endl << noName << std::endl << burA << std::endl << burB << std::endl << std::endl;
 
 	try
 	{
@@ -19,13 +19,9 @@ int main(void)
 		noName.demote(); // 149 -> 150
 		noName.demote(); // 150 -> 151 = throw
 	}
-	catch (Bureaucrat::GradeTooHighException & e)
+	catch (std::exception & e)
 	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 
 	try
@@ -34,14 +30,9 @@ int main(void)
 		burA.promote(); // 2 -> 1
 		burA.promote(); // 1 -> 0 = throw
 	}
-	catch (Bureaucrat::GradeTooHighException & e)
+	catch (std::exception & e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
 	return 0;
 }

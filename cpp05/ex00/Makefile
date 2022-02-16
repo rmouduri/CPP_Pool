@@ -1,16 +1,14 @@
 SRCS		=	main.cpp	\
 				Bureaucrat.cpp
 
-OBJS_SRCS	=	${SRCS:.cpp=.o}
+OBJS_SRCS	=	$(SRCS:.cpp=.o)
 
-.c.o:
-				${CC} ${CFLAGS} -c ${INCLUDES} $< -o ${<:.cpp=.o}
-
-INCLUDES	=	-I.
+%.o:			%.cpp ./*.hpp
+				${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${<:.cpp=.o}
 
 NAME		=	Bureaucrat
 
-CFLAGS      =   -Wall -Werror -Wextra -std=c++98
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
 CC			=	c++
 
