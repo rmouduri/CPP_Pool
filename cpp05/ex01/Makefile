@@ -1,20 +1,15 @@
 SRCS		=	main.cpp	\
-				AMateria.cpp	\
-				Ice.cpp	\
-				Cure.cpp	\
-				MateriaSource.cpp	\
-				Character.cpp
+				Bureaucrat.cpp	\
+				Form.cpp
 
-OBJS_SRCS	=	${SRCS:.cpp=.o}
+OBJS_SRCS	=	$(SRCS:.cpp=.o)
 
-.c.o:
-				${CC} ${CFLAGS} -c ${INCLUDES} $< -o ${<:.cpp=.o}
+%.o:			%.cpp ./*.hpp
+				${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${<:.cpp=.o}
 
-INCLUDES	=	-I.
+NAME		=	Form
 
-NAME		=	Materia
-
-CFLAGS      =   -Wall -Werror -Wextra -std=c++98
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
 CC			=	c++
 

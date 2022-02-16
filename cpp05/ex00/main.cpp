@@ -1,17 +1,13 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-using std::exception;
-
-using std::cout; using std::endl; using std::cerr;
-
 int main(void)
 {
 	Bureaucrat noName;
 	Bureaucrat burA("Mike", 1);
 	Bureaucrat burB(burA);
 
-	cout << std::endl << noName << std::endl << burA << std::endl << burB << std::endl << std::endl;
+	std::cout << std::endl << noName << std::endl << burA << std::endl << burB << std::endl << std::endl;
 
 	try
 	{
