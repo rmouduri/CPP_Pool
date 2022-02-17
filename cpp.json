@@ -47,7 +47,7 @@
 			"std::ostream& operator<<(std::ostream& o, $1 &out$1)",
 			"{",
 			"\to << out$1. << std::endl;",
-			"\treturn o",
+			"\treturn o;",
 			"}",
 			"",
 			"# endif // __$2_HPP__"

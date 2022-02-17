@@ -4,8 +4,8 @@
 
 int main(void)
 {
-	Bureaucrat burA("Mike", 1);
-	Form f, f2("Social Security Form", 1, 2), f2bis(f2);
+	Bureaucrat burA("Mike", 2);
+	Form f, f2("Social Security Form", 2, 1), f2bis(f2);
 
 	std::cout << std::endl <<
 			f << std::endl <<
@@ -25,13 +25,13 @@ int main(void)
 	std::cout << std::endl;
 
 	try {
-		Form f("invalid form", 1, 151);
+		Form f("invalid form", 1, 151); // grade too low
 	} catch (std::exception & e) {
 		std::cerr << e.what() << std::endl;
 	}
 
 	try {
-		Form f("invalid form", 0, 50);
+		Form f("invalid form", 0, 50); // grade too high
 	} catch (std::exception & e) {
 		std::cerr << e.what() << std::endl << std::endl;
 	}
