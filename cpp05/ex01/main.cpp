@@ -4,8 +4,8 @@
 
 int main(void)
 {
-	Bureaucrat burA("Mike", 2);
-	Form f, f2("Social Security Form", 2, 1), f2bis(f2);
+	Bureaucrat burA("Mike", 1);
+	Form f, f2("Social Security Form", 1, 1), f2bis(f2);
 
 	std::cout << std::endl <<
 			f << std::endl <<
