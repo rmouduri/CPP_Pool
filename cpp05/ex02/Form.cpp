@@ -9,6 +9,7 @@ Form::Form(void): _name("__noNameForm__"), _signRequiredGrade(150), _execRequire
 
 Form::Form(const std::string name, int signRequiredGrade, int execRequiredGrade): _name(name), _signRequiredGrade(150), _execRequiredGrade(150)
 {
+	std::cout << "Arguments Constructor for Form called" << std::endl;
 	checkGrade(signRequiredGrade);
 	*(int *)(&this->_signRequiredGrade) = signRequiredGrade;
 	checkGrade(execRequiredGrade);
