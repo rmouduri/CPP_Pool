@@ -7,8 +7,10 @@ Form::Form(void): _name("__noNameForm__"), _signRequiredGrade(150), _execRequire
 	return ;
 }
 
-Form::Form(const std::string name, int signRequiredGrade, int execRequiredGrade): _name(name), _signRequiredGrade(150), _execRequiredGrade(150)
+Form::Form(const std::string name, int signRequiredGrade, int execRequiredGrade) throw(Form::GradeTooHighException, Form::GradeTooLowException):
+	_name(name), _signRequiredGrade(150), _execRequiredGrade(150)
 {
+	std::cout << "Arguments Constructor for Form called" << std::endl;
 	checkGrade(signRequiredGrade);
 	*(int *)(&this->_signRequiredGrade) = signRequiredGrade;
 	checkGrade(execRequiredGrade);
@@ -40,8 +42,8 @@ Form& Form::operator=(const Form& newForm)
 
 std::ostream& operator<<(std::ostream& o, Form &outForm)
 {
-	o << "Form " << outForm.getName() << " requires grade " << outForm.getSignGrade() << " to be signed and grade " <<
-		outForm.getExecGrade() << " to be executed, form " << (outForm.isSigned() ? "is signed" : "isn't signed");
+	o << "Form " << outForm.getName() << " requires grade " << outForm.getSignRequiredGrade() << " to be signed and grade " <<
+		outForm.getExecRequiredGrade() << " to be executed, form " << (outForm.isSigned() ? "is signed" : "isn't signed");
 	return o;
 }
 
@@ -80,7 +82,7 @@ void Form::setSigned(bool setting)
 	this->_signed = setting;
 }
 
-void Form::checkGrade(int grade) const
+void Form::checkGrade(int grade) const throw(Form::GradeTooHighException, Form::GradeTooLowException)
 {
 	if (grade < 1)
 		throw Form::GradeTooHighException();
@@ -103,7 +105,7 @@ const char *Form::FormNotSignedException::what(void) const throw()
 	return ("Form not signed");
 }
 
-void Form::beSigned(Bureaucrat &b)
+void Form::beSigned(Bureaucrat &b) throw(Form::GradeTooLowException)
 {
 	if (this->_signed)
 	{
@@ -115,22 +117,12 @@ void Form::beSigned(Bureaucrat &b)
 	this->_signed = true;
 }
 
-int Form::getSignGrade(void) const
-{
-	return this->_signRequiredGrade;
-}
-
-int Form::getExecGrade(void) const
-{
-	return this->_execRequiredGrade;
-}
-
 bool Form::isSigned(void) const
 {
 	return this->_signed;
 }
 
-void Form::execute(Bureaucrat const & executor) const
+void Form::execute(Bureaucrat const & executor) const throw(Form::FormNotSignedException, Form::GradeTooLowException)
 {
 	if (this->_signed == false)
 		throw Form::FormNotSignedException();
