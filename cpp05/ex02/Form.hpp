@@ -37,22 +37,20 @@ public:
 	};
 	
 	Form();
-	Form(const std::string name, int signRequiredGrade, int execRequiredGrade);
+	Form(const std::string name, int signRequiredGrade, int execRequiredGrade) throw(Form::GradeTooHighException, Form::GradeTooLowException);
 	Form(const Form& newForm);
-	~Form();
+	virtual ~Form();
 
 	Form& operator=(const Form &newForm);
 
 	const std::string getName() const;
 	int getSignRequiredGrade() const;
 	int getExecRequiredGrade() const;
-
-	void checkGrade(int grade) const;
-	void beSigned(Bureaucrat &b);
-	int getSignGrade() const;
-	int getExecGrade() const;
 	bool isSigned() const;
-	void execute(Bureaucrat const & executor) const;
+
+	void checkGrade(int grade) const throw(Form::GradeTooHighException, Form::GradeTooLowException);
+	void beSigned(Bureaucrat &b) throw(Form::GradeTooLowException);
+	void execute(Bureaucrat const & executor) const throw(Form::FormNotSignedException, Form::GradeTooLowException);
 	virtual void makeFormAction() const = 0;
 };
 

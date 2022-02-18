@@ -23,7 +23,7 @@ public:
 	};
 
 	Bureaucrat();
-	Bureaucrat(const std::string name, const int grade);
+	Bureaucrat(const std::string name, const int grade) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 	Bureaucrat(const Bureaucrat& newBureaucrat);
 	~Bureaucrat();
 
@@ -32,7 +32,7 @@ public:
 	int getGrade() const;
 	void promote();
 	void demote();
-	void checkGrade(int grade);
+	void checkGrade(int grade) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 	void signForm(Form &f);
 };
 

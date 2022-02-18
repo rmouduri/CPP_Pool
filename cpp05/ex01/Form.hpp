@@ -12,6 +12,13 @@ private:
 	const int _signRequiredGrade;
 	const int _execRequiredGrade;
 	bool _signed;
+
+protected:
+	void setName(std::string newName);
+	void setSignRequiredGrade(const int newSignRequiredGrade);
+	void setExecRequiredGrade(const int newExecRequiredGrade);
+	void setSigned(bool setting);
+
 public:
 	class GradeTooHighException: public std::exception
 	{
@@ -23,20 +30,26 @@ public:
 		public:
 			virtual const char *what() const throw();
 	};
+	class FormNotSignedException: public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
 	
 	Form();
-	Form(const std::string name, int signRequiredGrade, int execRequiredGrade);
+	Form(const std::string name, int signRequiredGrade, int execRequiredGrade) throw(Form::GradeTooHighException, Form::GradeTooLowException);
 	Form(const Form& newForm);
-	~Form();
+	virtual ~Form();
 
 	Form& operator=(const Form &newForm);
 
-	const std::string getName();
-	void checkGrade(int grade);
-	void beSigned(Bureaucrat &b);
-	int getSignGrade();
-	int getExecGrade();
-	bool isSigned();
+	const std::string getName() const;
+	int getSignRequiredGrade() const;
+	int getExecRequiredGrade() const;
+	bool isSigned() const;
+
+	void checkGrade(int grade) const throw(Form::GradeTooHighException, Form::GradeTooLowException);
+	void beSigned(Bureaucrat &b) throw(Form::GradeTooLowException);
 };
 
 std::ostream& operator<<(std::ostream& o, Form &outForm);

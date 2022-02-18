@@ -14,7 +14,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& newBureaucrat): _name(newBureaucrat.get
 	return ;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, const int grade): _name(name)
+Bureaucrat::Bureaucrat(const std::string name, const int grade) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException):
+	_name(name)
 {
 	std::cout << "Arguments Constructor for Bureaucrat called" << std::endl;
 	checkGrade(grade);
@@ -76,7 +77,7 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 	return ("Grade too low");
 }
 
-void Bureaucrat::checkGrade(int grade)
+void Bureaucrat::checkGrade(int grade) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException) 
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
