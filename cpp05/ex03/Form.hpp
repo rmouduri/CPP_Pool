@@ -50,6 +50,8 @@ public:
 
 	void checkGrade(int grade) const throw(Form::GradeTooHighException, Form::GradeTooLowException);
 	void beSigned(Bureaucrat &b) throw(Form::GradeTooLowException);
+	void execute(Bureaucrat const & executor) const throw(Form::FormNotSignedException, Form::GradeTooLowException);
+	virtual void makeFormAction() const = 0;
 };
 
 std::ostream& operator<<(std::ostream& o, Form &outForm);

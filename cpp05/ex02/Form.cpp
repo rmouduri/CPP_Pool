@@ -121,3 +121,12 @@ bool Form::isSigned(void) const
 {
 	return this->_signed;
 }
+
+void Form::execute(Bureaucrat const & executor) const throw(Form::FormNotSignedException, Form::GradeTooLowException)
+{
+	if (this->_signed == false)
+		throw Form::FormNotSignedException();
+	else if (this->_execRequiredGrade < executor.getGrade())
+		throw Form::GradeTooLowException();
+	this->makeFormAction();
+}

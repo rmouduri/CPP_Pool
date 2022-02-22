@@ -1,13 +1,12 @@
 SRCS		=	main.cpp	\
-				Bureaucrat.cpp	\
-				Form.cpp
+				Bureaucrat.cpp
 
 OBJS_SRCS	=	$(SRCS:.cpp=.o)
 
 %.o:			%.cpp ./*.hpp
 				${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${<:.cpp=.o}
 
-NAME		=	Form
+NAME		=	Bureaucrat
 
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 

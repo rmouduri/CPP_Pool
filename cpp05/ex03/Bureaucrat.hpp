@@ -34,6 +34,7 @@ public:
 	void demote();
 	void checkGrade(int grade) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 	void signForm(Form &f);
+	void executeForm(Form const & form) const;
 };
 
 std::ostream& operator<<(std::ostream& o, Bureaucrat &outBureaucrat);
