@@ -1,53 +1,48 @@
 #include <iostream>
-#include <Array.hpp>
+#include <cmath>
+#include "iter.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+class Test
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	int _x;
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+	public:
+		Test(int x): _x(x) {};
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+		int getX(void) { return _x; };
+};
+
+void printTestX(Test & t)
+{
+	std::cout << t.getX() << "\n";
+}
+
+void print(int & p)
+{
+	std::cout << p << "\n";
+}
+
+void pow2(int & p)
+{
+	p = pow(2, p);
+}
+
+int main(void)
+{
+	std::cout << "Test with array of ints:" << std::endl;
+
+	int ia[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	::iter(ia, 10, &print);
+	std::cout << std::endl;
+	::iter(ia, 10, &pow2);
+	::iter(ia, 10, &print);
+
+	std::cout << std::endl << "Test with array of classes:" << std::endl;
+
+	Test fa[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	::iter(fa, sizeof (fa) / sizeof (Test), &printTestX);
+
+	return 0;
 }
