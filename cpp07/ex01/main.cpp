@@ -42,7 +42,7 @@ int main(void)
 
 	Test fa[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-	::iter(fa, sizeof (fa) / sizeof (Test), &printTestX);
+	::iter(fa, 10, &printTestX);
 
 	return 0;
 }
