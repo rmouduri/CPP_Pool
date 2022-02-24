@@ -10,14 +10,13 @@ class Array
 {
 private:
 	size_t	_size;
-	T		*_array = NULL;
+	T		*_array;
 public:
 	Array(): _size(0), _array(new T[_size]) {};
 	Array(unsigned int size): _size(size), _array(new T[_size]) {};
 	Array(Array & newArray): _size(newArray._size)
 	{
-		if (this->_array)
-			delete this->_array;
+		std::cout << "COPY\n";
 		this->_array = new T[_size];
 		for (size_t i = 0; i < this->_size; ++i)
 			this->_array[i] = newArray._array[i];

@@ -40,9 +40,9 @@ int main(void)
 
 	std::cout << std::endl << "Test with array of classes:" << std::endl;
 
-	Test fa[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	Test ta[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-	::iter(fa, 10, &printTestX);
+	::iter(ta, 10, &printTestX);
 
 	return 0;
 }
