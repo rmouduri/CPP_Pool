@@ -9,7 +9,7 @@ NAME		=	Array
 
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
-CC			=	c++
+CC			=	c++ #-g -fsanitize=address
 
 RM			=	rm -f
 
