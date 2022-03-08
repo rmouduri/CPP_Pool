@@ -1,12 +1,11 @@
-#ifndef __EASYFIND_HPP__
-# define __EASYFIND_HPP__
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
+# include <algorithm>
 
-# include <iostream>
-
-template<typename T>
-T & easyfind(T t, int i)
+template <typename T>
+typename T::iterator easyfind(T & v, int val)
 {
-	;
+	return std::find(v.begin(), v.end(), val);
 }
 
-# endif // __EASYFIND_HPP__
+#endif
