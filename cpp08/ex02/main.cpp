@@ -33,7 +33,7 @@ int main(void)
 			++it;
 		}
 
-		// std::stack<int> s(mstack);
+		std::stack<int> s(mstack);
 	}
 	std::cout << "--------------------" << std::endl;
 	{

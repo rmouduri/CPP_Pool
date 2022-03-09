@@ -24,7 +24,7 @@ int main(void)
 		cout << "I couldn't find -10" << std::endl;
 	} else {
 		cout << "I found -10" << std::endl;
-	}	
+	}
 
 	return 0;
 }
