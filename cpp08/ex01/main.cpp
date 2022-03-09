@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 		sp.addNumber(9);
 		sp.addNumber(11);
 		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl << std::endl;
 	}
 
 	int max = argc == 3 ? atoi(argv[2]) : 42;
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 
 	for (std::vector<int>::const_iterator c = sp.getData().begin(); c != sp.getData().end(); ++c)
 		std::cout << *c << ' ';
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 
 	cout << "shortestSpan: " << sp.shortestSpan() << std::endl;
 	cout << "longestSpan: " << sp.longestSpan() << std::endl;
